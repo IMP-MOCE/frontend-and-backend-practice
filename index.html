@@ -7,53 +7,67 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <!-- Изменение: Заменили div на семантические теги -->
         <div class="page-container">
-            <div class="header">Хэдер</div>
-            <div class="nav">
+            <header class="header"> <!-- Было: <div class="header"> -->
+                <h1>Хэдер</h1> <!-- Добавили заголовок для семантики -->
+            </header>
+
+            <nav class="nav"> <!-- Было: <div class="nav"> -->
                 <ul class="nav-list">
                     <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/practice.html">Практики</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="pages/practices.html">Практики</a></li> 
                     <li class="nav-item"><a class="nav-link" href="pages/cards.html">Товары</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
                 </ul>
-            </div>
-            <div class="content">
-                <div class="profile-header">
+            </nav>
+
+            <main class="content"> <!-- Было: <div class="content"> -->
+                <article class="profile-header"> <!-- Было: <div class="profile-header"> -->
                     <h1 class="profile-title">Информация об авторе</h1>
                     <img class="profile-photo" src="assets/profile.jpg" alt="Фото автора">
                     <h2 class="profile-name">Осадчев Никита Александрович</h2>
                     <p class="profile-group">ЭФБО-04-24</p>
-                </div>
+                </article>
                 
-                <div class="about-me">
-                    <p>Обо мне: жил, пил, ел, жир плыл, лез.</p>
-                </div>
+                <section class="about-me"> <!-- Было: <div class="about-me"> -->
+                    <h2>Обо мне</h2> <!-- Добавили заголовок для семантики -->
+                    <p>Обо мне: Жил пил ел жир плыл в лес (опосля он же не влез)</p>
+                </section>
                 
-                <div class="skills-container">
-                    <div class="skill-tag">Навык 1</div>
-                    <div class="skill-tag">Навык 2</div>
-                    <div class="skill-tag">Навык 3</div>
-                    <div class="skill-tag">Навык 4</div>
-                </div>
+                <section class="skills-container"> <!-- Было: <div class="skills-container"> -->
+                    <h2>Мои навыки</h2> <!-- Добавили заголовок для семантики -->
+                    <div class="skills-grid"> <!-- Обертка для Grid -->
+                        <div class="skill-tag">Навык 1</div>
+                        <div class="skill-tag">Навык 2</div>
+                        <div class="skill-tag">Навык 3</div>
+                        <div class="skill-tag">Навык 4</div>
+                    </div>
+                </section>
                 
-                <div class="experience-section">
+                <section class="experience-section"> <!-- Было: <div class="experience-section"> -->
                     <h2 class="section-title">Мой опыт работы</h2>
-                    <div class="experience-card">
-                        <h3 class="experience-title">Опыт 1</h3>
-                        <p class="experience-desc">Работал работником.</p>
+                    <div class="experience-grid"> <!-- Обертка для Grid -->
+                        <article class="experience-card"> <!-- Было: <div class="experience-card"> -->
+                            <h3 class="experience-title">Опыт 1</h3>
+                            <p class="experience-desc">Работал на работе</p>
+                        </article>
+                        <article class="experience-card">
+                            <h3 class="experience-title">Опыт 2</h3>
+                            <p class="experience-desc">Работал работником</p>
+                        </article>
+                        <article class="experience-card">
+                            <h3 class="experience-title">Опыт 3</h3>
+                            <p class="experience-desc">Работал рэпером. Выгнали.</p>
+                        </article>
                     </div>
-                    <div class="experience-card">
-                        <h3 class="experience-title">Опыт 2</h3>
-                        <p class="experience-desc">Работал на работе.</p>
-                    </div>
-                    <div class="experience-card">
-                        <h3 class="experience-title">Опыт 3</h3>
-                        <p class="experience-desc">Работал рэпером. Мне сказали: "это не работа".</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer">Футер</div>    
+                </section>
+            </main>
+
+            <footer class="footer"> <!-- Было: <div class="footer"> -->
+                <p>Футер</p> <!-- Добавили параграф для семантики -->
+            </footer>    
         </div>
     </body>
 </html>
