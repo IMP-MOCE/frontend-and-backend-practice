@@ -1,361 +1,168 @@
-
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Контакты</title>
-        <link rel="stylesheet" href="../css/style.css">
-        <style>
-            /* Стили для модального окна */
-            dialog::backdrop {
-                background: rgba(0, 0, 0, 0.6);
-                animation: fadeIn 0.3s ease;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты — БЭМ</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- block: header -->
+      <header class="header" role="banner">
+        <h1 class="header__title">Контакты</h1>
+        <p class="header__subtitle">Мы без связи и рады помогите</p>
+      </header>
+
+      <!-- block: nav -->
+      <nav class="nav" aria-label="Главная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+          <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+          <li class="nav__item"><a class="nav__link" href="practices.html">Практики</a></li>
+          <li class="nav__item"><a class="nav__link" href="goods.html">Товары</a></li>
+          <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html" aria-current="page">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <!-- block: content -->
+      <main class="content" role="main">
+        <!-- block: contacts -->
+        <section class="contacts" aria-labelledby="contacts-title">
+          <h2 id="contacts-title" class="contacts__title">Наши контакты</h2>
+
+          <div class="contacts__grid">
+            <article class="contacts__card" aria-label="Электронная почта">
+              <h3 class="contacts__card-title">Электронная почта</h3>
+              <p class="contacts__card-text">example@rex.ex</p>
+            </article>
+
+            <article class="contacts__card" aria-label="Физический адрес">
+              <h3 class="contacts__card-title">Физический адрес</h3>
+              <p class="contacts__card-text">г. Москва, ул. Пингвинов 7</p>
+            </article>
+
+            <article class="contacts__card" aria-label="Телефон">
+              <h3 class="contacts__card-title">Телефон</h3>
+              <p class="contacts__card-text">+7 (123) 456-78-89</p>
+            </article>
+
+            <article class="contacts__card" aria-label="Время работы">
+              <h3 class="contacts__card-title">Время работы</h3>
+              <p class="contacts__card-text">Пн–Сб: 9:00–18:00</p>
+            </article>
+
+            <article class="contacts__card" aria-label="Социальные сети">
+              <h3 class="contacts__card-title">Социальные сети</h3>
+              <p class="contacts__card-text">Одноклассники</p>
+            </article>
+          </div>
+
+          <button id="contacts-open" class="contacts__button" type="button">Связаться с нами</button>
+        </section>
+      </main>
+
+      <!-- block: footer -->
+      <footer class="footer" role="contentinfo">
+        <p class="footer__copy">© 2025 Все права защищены</p>
+      </footer>
+    </div>
+
+    <!-- block: modal -->
+    <dialog id="contact-modal" class="modal">
+      <div class="modal__header">
+        <h2 class="modal__title">Форма обратной связи</h2>
+      </div>
+      <div class="modal__body">
+        <form id="contacts-form" class="modal__form" method="dialog" novalidate>
+          <div class="modal__group">
+            <label class="modal__label" for="name">Имя <span class="modal__required" aria-hidden="true">*</span></label>
+            <input class="modal__control" type="text" id="name" name="name" required placeholder="Иван" />
+          </div>
+          <div class="modal__group">
+            <label class="modal__label" for="phone">Телефон <span class="modal__required" aria-hidden="true">*</span></label>
+            <input class="modal__control" type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX" />
+          </div>
+          <div class="modal__group">
+            <label class="modal__label" for="email">Электронная почта <span class="modal__required" aria-hidden="true">*</span></label>
+            <input class="modal__control" type="email" id="email" name="email" required placeholder="example@mail.ru" />
+          </div>
+          <div class="modal__group">
+            <label class="modal__label" for="category">Категория обращения <span class="modal__required" aria-hidden="true">*</span></label>
+            <select class="modal__control" id="category" name="category" required>
+              <option value="">Выберите категорию</option>
+              <option value="technical">Техническая поддержка</option>
+              <option value="commercial">Коммерческое предложение</option>
+              <option value="cooperation">Сотрудничество</option>
+              <option value="complaint">Жалоба</option>
+              <option value="suggestion">Предложение</option>
+              <option value="other">Другое</option>
+            </select>
+          </div>
+          <div class="modal__group">
+            <label class="modal__label" for="message">Текст обращения <span class="modal__required" aria-hidden="true">*</span></label>
+            <textarea class="modal__control modal__control--area" id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
+          </div>
+          <div class="modal__actions">
+            <button type="submit" id="contacts-cancel" class="btn btn--secondary">Отмена</button>
+            <button type="button" id="contacts-send" class="btn btn--primary">Отправить</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <script>
+      (function () {
+        const dlg = document.getElementById('contact-modal');
+        const openBtn = document.getElementById('contacts-open');
+        const cancelBtn = document.getElementById('contacts-cancel');
+        const sendBtn = document.getElementById('contacts-send');
+        const form = document.getElementById('contacts-form');
+        const phone = document.getElementById('phone');
+        if (!dlg || !openBtn || !form) return;
+
+        let lastActive = null;
+        openBtn.addEventListener('click', () => {
+          lastActive = document.activeElement; dlg.showModal();
+          dlg.querySelector('input, select, textarea, button')?.focus();
+        });
+        cancelBtn?.addEventListener('click', (e) => { e.preventDefault(); dlg.close('cancel'); });
+        dlg?.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+
+        sendBtn?.addEventListener('click', (e) => {
+          [...form.elements].forEach(el => el.setCustomValidity?.(''));
+          if (!form.checkValidity()) {
+            e.preventDefault();
+            const email = form.elements.email;
+            if (email?.validity.typeMismatch) {
+              email.setCustomValidity('Введите корректный e-mail, например name@example.com');
             }
+            form.reportValidity();
+            [...form.elements].forEach(el => { if (el.willValidate) el.toggleAttribute('aria-invalid', !el.checkValidity()); });
+            return;
+          }
+          e.preventDefault();
+          alert('Форма успешно отправлена!');
+          dlg.close('success');
+          form.reset();
+          [...form.elements].forEach(el => el.removeAttribute('aria-invalid'));
+        });
 
-            dialog {
-                border: none;
-                border-radius: 12px;
-                padding: 0;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-                animation: slideIn 0.3s ease;
-                max-width: 500px;
-                width: 90vw;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
+        phone?.addEventListener('input', () => {
+          const digits = phone.value.replace(/\D/g, '').slice(0, 11);
+          const d = digits.replace(/^8/, '7');
+          const parts = [];
+          if (d.length > 0) parts.push('+7');
+          if (d.length > 1) parts.push(' (' + d.slice(1, 4));
+          if (d.length >= 4) parts[parts.length - 1] += ')';
+          if (d.length >= 5) parts.push(' ' + d.slice(4, 7));
+          if (d.length >= 8) parts.push('-' + d.slice(7, 9));
+          if (d.length >= 10) parts.push('-' + d.slice(9, 11));
+          phone.value = parts.join('');
+        });
 
-            .modal-header {
-                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-                color: white;
-                padding: 1.5rem;
-                border-radius: 12px 12px 0 0;
-                margin: 0;
-            }
-
-            .modal-header h2 {
-                margin: 0;
-                color: white;
-                font-size: 1.5rem;
-            }
-
-            .modal-content {
-                padding: 2rem;
-            }
-
-            .form-group {
-                margin-bottom: 1.5rem;
-            }
-
-            .form-group label {
-                display: block;
-                margin-bottom: 0.5rem;
-                font-weight: 600;
-                color: #2c3e50;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                width: 100%;
-                padding: 0.75rem;
-                border: 2px solid #e9ecef;
-                border-radius: 6px;
-                font-size: 1rem;
-                transition: border-color 0.3s ease;
-                box-sizing: border-box;
-            }
-
-            .form-group input:focus,
-            .form-group select:focus,
-            .form-group textarea:focus {
-                outline: none;
-                border-color: #667eea;
-            }
-
-            .form-group textarea {
-                min-height: 100px;
-                resize: vertical;
-            }
-
-            .modal-actions {
-                display: flex;
-                gap: 1rem;
-                justify-content: flex-end;
-                margin-top: 2rem;
-            }
-
-            .btn {
-                padding: 0.75rem 1.5rem;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 1rem;
-                transition: all 0.3s ease;
-                font-weight: 600;
-            }
-
-            .btn-primary {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-            }
-
-            .btn-primary:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            }
-
-            .btn-secondary {
-                background: #f8f9fa;
-                color: #2c3e50;
-                border: 2px solid #e9ecef;
-            }
-
-            .btn-secondary:hover {
-                background: #e9ecef;
-            }
-
-            .required {
-                color: #e74c3c;
-            }
-
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-
-            @keyframes slideIn {
-                from { 
-                    opacity: 0;
-                    transform: translateY(-50px) scale(0.9);
-                }
-                to { 
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-            }
-
-            /* Адаптивность */
-            @media (max-width: 600px) {
-                dialog {
-                    margin: 1rem;
-                    width: calc(100vw - 2rem);
-                }
-                
-                .modal-actions {
-                    flex-direction: column;
-                }
-                
-                .btn {
-                    width: 100%;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="page-container">
-            <header class="header">
-                <h1>Контакты</h1>
-            </header>
-
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                    <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="cards.html">Товары</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
-                </ul>
-            </nav>
-
-            <main class="content">
-                <section class="contacts-container">
-                    <h2 class="section-title">Наши контакты</h2>
-                    
-                    <article class="contact-info">
-                        <h3>Электронная почта</h3>
-                        <p>Адрес электронной почты: example@rex.ex</p>
-                    </article>
-                    
-                    <article class="contact-info">
-                        <h3>Физический адрес</h3>
-                        <p>Адрес: г. Москва, ул. Пингвинов 7</p>
-                    </article>
-
-                    <div class="contact-grid">
-                        <div class="contact-item">
-                            <h3>Телефон</h3>
-                            <p>+7 (123) 456-78-89</p>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Время работы</h3>
-                            <p>Пн-Cб: 9:00-18:00</p>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Социальные сети</h3>
-                            <p>Одноклассники</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Измененная кнопка для открытия модального окна -->
-                    <button id = "openDialog" class="contact-button">Связаться с нами</button>
-                </section>
-            </main>
-
-            <footer class="footer">
-                <p>© 2025 Все права защищены. Контактная информация</p>
-            </footer>
-
-            <!-- Модальное окно для формы обратной связи -->
-            <dialog id="contactModal">
-                <div class="modal-header">
-                    <h2>Форма обратной связи</h2>
-                </div>
-                
-                <div class="modal-content">
-                    <form id="feedbackForm" method="dialog">
-                        <div class="form-group">
-                            <label for="name">Имя <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Телефон <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Электронная почта <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="example@mail.ru">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="category">Категория обращения <span class="required">*</span></label>
-                            <select id="category" name="category" required>
-                                <option value="">Выберите категорию</option>
-                                <option value="technical">Техническая поддержка</option>
-                                <option value="commercial">Коммерческое предложение</option>
-                                <option value="cooperation">Сотрудничество</option>
-                                <option value="complaint">Жалоба</option>
-                                <option value="suggestion">Предложение</option>
-                                <option value="other">Другое</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Текст обращения <span class="required">*</span></label>
-                            <textarea id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
-                        </div>
-
-                        <div class="modal-actions">
-                            <!-- Кнопка отмены с автоматическим закрытием через form method="dialog" -->
-                            <button type="submit" id = "closeDialog" class="btn btn-secondary">Отмена</button>
-                            <!-- Кнопка отправки с обработкой через JavaScript -->
-                            <button type="button" id = "submitBtn"  class="btn btn-primary">Отправить</button>
-                        </div>
-                    </form>
-                </div>
-            </dialog>
-
-            <script>
-                // Код для модального окна (только если элементы существуют)
-                const initModal = () => {
-                    const dlg = document.getElementById('contactModal');
-                    const openBtn = document.getElementById('openDialog');
-                    const closeBtn = document.getElementById('closeDialog');
-                    const form = document.getElementById('feedbackForm');
-                    const submitBtn = document.getElementById('submitBtn');
-
-                    if (!dlg || !openBtn) return; // Если элементов нет, выходим
-                    
-                    let lastActive = null;
-
-                    // Открытие модального окна
-                    openBtn.addEventListener('click', () => {
-                        lastActive = document.activeElement;
-                        dlg.showModal();
-                        dlg.querySelector('input, select, textarea, button')?.focus();
-                    });
-
-                    // Закрытие модального окна
-                    closeBtn?.addEventListener('click', () => dlg.close('cancel'));
-                    
-                    dlg?.addEventListener('click', function(event) {
-                        if (event.target === this) {
-                            this.close();
-                        }
-                    });
-
-
-
-                    // Обработка отправки формы
-                    submitBtn?.addEventListener('click', (e) => {
-                        // Сброс кастомных сообщений
-                        [...form.elements].forEach(el => el.setCustomValidity?.(''));
-                        
-                        // Проверка встроенных ограничений
-                        if (!form.checkValidity()) {
-                            e.preventDefault();
-                            
-                            // Таргетированные сообщения об ошибках
-                            const email = form.elements.email;
-                            if (email?.validity.typeMismatch) {
-                                email.setCustomValidity('Введите корректный e-mail, например name@example.com');
-                            }
-                            
-                            const phone = form.elements.phone;
-                            if (phone?.validity.patternMismatch) {
-                                phone.setCustomValidity('Введите телефон в формате +7 (900) 000-00-00');
-                            }
-                            
-                            form.reportValidity();
-                            
-                            // Подсветка проблемных полей для доступности
-                            [...form.elements].forEach(el => {
-                                if (el.willValidate) {
-                                    el.toggleAttribute('aria-invalid', !el.checkValidity());
-                                }
-                            });
-                            return;
-                        }
-                        
-                        e.preventDefault();
-                        alert("Форма успешно отправлена!");
-                        dlg.close('success');
-                        form.reset();
-                        
-                        // Сброс состояния доступности
-                        [...form.elements].forEach(el => {
-                            el.removeAttribute('aria-invalid');
-                        });
-                    });
-
-                    // Маска для телефона
-                    const phone = document.getElementById('phone');
-                    phone?.addEventListener('input', () => {
-                        const digits = phone.value.replace(/\D/g,'').slice(0, 11);
-                        const d = digits.replace(/^8/, '7');
-                        
-                        const parts = [];
-                        if (d.length > 0) parts.push('+7');
-                        if (d.length > 1) parts.push(' (' + d.slice(1, 4));
-                        if (d.length >= 4) parts[parts.length - 1] += ')';
-                        if (d.length >= 5) parts.push(' ' + d.slice(4, 7));
-                        if (d.length >= 8) parts.push('-' + d.slice(7, 9));
-                        if (d.length >= 10) parts.push('-' + d.slice(9, 11));
-                        
-                        phone.value = parts.join('');
-                    });
-
-                    // Возврат фокуса после закрытия модального окна
-                    dlg.addEventListener('close', () => {
-                        lastActive?.focus();
-                    });
-                };
-
-                // Инициализация модального окна при загрузке
-                document.addEventListener('DOMContentLoaded', initModal);
-            </script>
-        </div>
-    </body>
+        dlg.addEventListener('close', () => lastActive?.focus());
+      })();
+    </script>
+  </body>
 </html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Товары — BEM</title>
+  <link rel = "stylesheet" href ="../css/style.css">
+</head>
+<body>
+  <div class="page">
+    <!-- block: header -->
+    <header class="header" role="banner">
+      <h1 class="header__title">Товары</h1>
+      <p class="header__subtitle">Качество и стиль по честной цене</p>
+    </header>
+
+    <!-- block: nav -->
+    <nav class="nav" aria-label="Главная навигация">
+      <div class="nav__bar">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+          <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+          <li class="nav__item"><a class="nav__link" href="practices.html">Практики</a></li>
+          <li class="nav__item nav__item--active"><a class="nav__link" href="goods.html" aria-current="page">Товары</a></li>
+          <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- block: content -->
+    <main class="content" role="main">
+      <!-- block: catalog -->
+      <section class="catalog" aria-labelledby="catalog-title">
+        <h2 id="catalog-title" class="catalog__title">Каталог товаров</h2>
+        <p class="catalog__description">Мы предлагаем широкий ассортимент качественных товаров по доступным ценам</p>
+
+        <div class="catalog__grid">
+          <!-- block: product -->
+          <article class="product" aria-label="Материнская плата">
+            <div class="product__media">
+              <img class="product__image" src="../assets/mat.jpg" alt="Материнская плата" />
+            </div>
+            <div class="product__body">
+              <h3 class="product__title">Материнская плата</h3>
+              <p class="product__description">Не меняют мать ребята</p>
+              <div class="product__row">
+                <p class="product__price">15 990 ₽</p>
+                <button class="product__btn" type="button">В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" aria-label="Флагманская видеокарта">
+            <div class="product__media">
+              <img class="product__image" src="../assets/GPU.jpg" alt="Флагманская видеокарта" />
+            </div>
+            <div class="product__body">
+              <h3 class="product__title">Флагманская видеокарта</h3>
+              <p class="product__description">Производительная Оптимальная Чипонезависимая Карта AMD (ПОЧКА)</p>
+              <div class="product__row">
+                <p class="product__price">64 990 ₽</p>
+                <button class="product__btn" type="button">В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" aria-label="Блок питания">
+            <div class="product__media">
+              <img class="product__image" src="../assets/power-supply.jpg" alt="Блок питания" />
+            </div>
+            <div class="product__body">
+              <h3 class="product__title">Блок питания</h3>
+              <p class="product__description">Безопасный Универсальный Модуль (БУМ)</p>
+              <div class="product__row">
+                <p class="product__price">12 990 ₽</p>
+                <button class="product__btn" type="button">В корзину</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- block: footer -->
+    <footer class="footer" role="contentinfo">
+      <p class="footer__copy">© 2024 Интернет-магазин. Все права защищены.</p>
+    </footer>
+  </div>
+</body>
+</html>

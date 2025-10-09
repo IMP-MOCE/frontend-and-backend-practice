@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Новости</title>
         <link rel="stylesheet" href="../css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="page-container">
@@ -14,59 +17,161 @@
                 <h1>Новости</h1> <!-- Добавили осмысленный заголовок -->
             </header>
 
-            <!-- Изменение: Заменили div на семантический тег -->
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                    <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="cards.html">Товары</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
-                </ul>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-primary sticky-top">
+                <div class="container">
+                    <!-- links toggle -->
+                    <button class="navbar-toggler order-first" type="button" data-toggle="collapse" data-target="#links" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="links">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="../index.html">Главная</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="news.html">Новости</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="practices.html">Практики</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="goods.html">Товары</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contacts.html">Контакты</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
             <!-- Изменение: Заменили div на семантический тег -->
             <main class="content">
-                <!-- Изменение: Заменили div на семантический тег -->
-                <section class="news-container">
-                    <h2 class="section-title">Последние новости</h2>
-                    
-                    <!-- Изменение: Заменили div на семантический тег -->
-                    <article class="news-card">
-                        <header class="news-header">
-                            <h2 class="news-title">Запуск нового проекта</h2>
-                            <p class="news-meta">01.01.2025 12:00 | Автор: Администратор</p>
-                        </header>
-                        <div class="news-content">
-                            <p class="news-text">Текст новости 1. Мы рады сообщить о запуске нового проекта, который изменит подход к покупке продуктов. Проект включает в себя современные технологии и инновационные решения.</p>
-                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="news-link">Читать далее...</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Изменение: Заменили div на семантический тег -->
-                    <article class="news-card">
-                        <header class="news-header">
-                            <h2 class="news-title">Обновление дизайна</h2>
-                            <p class="news-meta">01.02.2025 12:00 | Автор: Кассир</p>
-                        </header>
-                        <div class="news-content">
-                            <p class="news-text">Текст новости 2. Представляем вашему вниманию обновленный дизайн нашего ларька. Мы улучшили пользовательский опыт и добавили новые прилавки для вашего удобства.</p>
-                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="news-link">Читать далее...</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Изменение: Заменили div на семантический тег -->
-                    <article class="news-card">
-                        <header class="news-header">
-                            <h2 class="news-title">Новые возможности</h2>
-                            <p class="news-meta">01.03.2025 12:00 | Автор: Брата брат</p>
-                        </header>
-                        <div class="news-content">
-                            <p class="news-text">Текст новости 3. Расширяем функциональность кассы. Теперь доступны новые инструменты для подсчёта ваших покупочек.</p>
-                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="news-link">Читать далее...</a>
-                        </div>
-                    </article>
-                </section>
+                <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Новость 1
+                    </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Открылся ларёк в селе!</strong> <br> Поздравляем первую успешную бизнес-вумен нашего села с открытием первого ларька в Мухтовартовске!
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Новость 2
+                    </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Единственный ларёк в селе был ограблен!</strong> <br> Сообщается, что нарушитель украл соду, губку и арбуз. Администраторша Ольга в печали, а кассир Валерий в запое.
+                    </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Новость 3
+                    </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Ларёк закрылся.</strong> <br> Большое несчастие постигло жителей Мухтовартовска, единственный ларёк села закрылся по причине истощения запасов алкоголя. Всё возвращается на круги своя, прямо в огород.
+                    </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Новость 4
+                    </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Ларёк закрылся.</strong> <br> Большое несчастие постигло жителей Мухтовартовска, единственный ларёк села закрылся по причине истощения запасов алкоголя. Всё возвращается на круги своя, прямо в огород.
+                    </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Новость 5
+                    </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Ларёк закрылся.</strong> <br> Большое несчастие постигло жителей Мухтовартовска, единственный ларёк села закрылся по причине истощения запасов алкоголя. Всё возвращается на круги своя, прямо в огород.
+                    </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        Новость 6
+                    </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Ларёк закрылся.</strong> <br> Большое несчастие постигло жителей Мухтовартовска, единственный ларёк села закрылся по причине истощения запасов алкоголя. Всё возвращается на круги своя, прямо в огород.
+                    </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        Новость 7
+                    </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Ларёк закрылся.</strong> <br> Большое несчастие постигло жителей Мухтовартовска, единственный ларёк села закрылся по причине истощения запасов алкоголя. Всё возвращается на круги своя, прямо в огород.
+                    </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        Новость 8
+                    </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Ларёк закрылся.</strong> <br> Большое несчастие постигло жителей Мухтовартовска, единственный ларёк села закрылся по причине истощения запасов алкоголя. Всё возвращается на круги своя, прямо в огород.
+                    </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        Новость 9
+                    </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Ларёк закрылся.</strong> <br> Большое несчастие постигло жителей Мухтовартовска, единственный ларёк села закрылся по причине истощения запасов алкоголя. Всё возвращается на круги своя, прямо в огород.
+                    </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        Новость 10
+                    </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Ларёк закрылся.</strong> <br> Большое несчастие постигло жителей Мухтовартовска, единственный ларёк села закрылся по причине истощения запасов алкоголя. Всё возвращается на круги своя, прямо в огород.
+                    </div>
+                    </div>
+                </div>
+                </div>
             </main>
 
             <!-- Изменение: Заменили div на семантический тег -->
